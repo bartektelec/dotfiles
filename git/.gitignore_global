@@ -1,0 +1,10 @@
+.log
+.DS_Store
+.Trashes
+
+node_modules
+node_modules/*
+
+Thumbs.db
+*.stackdump
+.idea*
