@@ -2,9 +2,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 
 # If you come from bash you might have to change your $PATH.
@@ -17,7 +17,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="amuse"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -110,136 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+source .aliases
+source .functions
 
-# ----------------------
-# Git Command Aliases
-# ----------------------
-#
-
-alias gpoh='git push origin HEAD'
-alias glog='git log --color --graph --date=iso --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset" --abbrev-commit --'
-alias gtree="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias gpull='git pull'
-alias gpm='git pull origin master'
-alias gc='git clone'
-alias gr='git rebase'
-alias ga='git add'
-alias gaa='git add .'
-alias gap='git add -p'
-alias gs='git status'
-alias gamend='git commit --amend'
-alias grom='git rebase origin/master'
-
-# ----------------------
-# Shell
-# ----------------------
-alias reload="exec $SHELL -l"
-
-# ----------------------
-# WP CLI
-# ----------------------
-alias wpthl='wp theme list'
-alias wppll='wp plugin list'
-
-# ----------------------
-# Additional
-# ----------------------
-alias weather="curl http://wttr.in/Oslo"
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-
-# ----------------------
-# Yarn
-# ----------------------
-alias yi="yarn install"
-alias yinit="yarn init"
-alias yiy="yarn init -y"
-alias ya="yarn add"
-alias yad="yarn add -D"
-alias yrm="yarn remove"
-alias yanl="yarn add --no-lockfile"
-alias yrn="yarn run"
-# ----------------------
-# ----------------------
-# PNPM
-# ----------------------
-alias pni="pnpm install"
-alias pninit="pnpm init"
-alias pniy="pnpm init -y"
-alias pna="pnpm install"
-alias pnad="pnpm install -D"
-alias pnrm="pnpm uninstall"
-alias pn="pnpm"
-
-# NPM
-# ----------------------
-alias ni="npm install"
-alias ninit="npm init"
-alias niy="npm init -y"
-alias na="npm install"
-alias nad="npm install -D"
-alias nrm="npm uninstall"
-alias nrn="npm run"
-
-# ----------------------
-# Vim
-# ----------------------
-alias nv="nvim"
-alias vimcfg="cd $HOME/AppData/Local/nvim"
-alias cdpr="cd D:/projects/"
-alias cdpg="cdpr && cd pg.hosting.client/src/ClientApp"
-
-# ----------------------
-# Tmux
-# ----------------------
-alias tma="script -c 'tmux attach' /dev/null"
-alias tmn="script -c tmux /dev/null"
-function tmpg() {
-  cdpg
-  session="pg-hosting-client"
-  tmux new-session -d -s $session
-  window=1
-  tmux rename-window -t $session:$window "nvim"
-  tmux send-keys -t $session:$window 'nvim' C-m
-  window=2
-  tmux new-window -t $session:$window -n "zsh"
-  tmux send-keys -t $session:$window "npm run dev:mock" C-m
-  window=3
-  tmux new-window -t $session:$window -n "test"
-  tmux send-keys -t $session:$window "npm run test:watch" C-m
-
-  tmux select-window -t "nvim"
-
-  script -c 'tmux attach-session -t $session' /dev/null
-}
-
-export TERM="xterm-256color"
-
-case "$TERM" in
-    xterm*|rxvt*)
-        function xtitle () {
-            builtin print -n -- "\e]0;$@\a"
-        }
-        ;;
-    screen)
-        function xtitle () {
-            builtin print -n -- "\ek$@\e\\"
-        }
-        ;;
-    *)
-        function xtitle () {
-        }
-esac
-
-last_two_dirs() {
-    local left=${PWD%/*};
-    echo "${PWD#${left%/*}/}"
-}
-
-function precmd () {
-  xtitle "$(print -P zsh $(last_two_dirs))"
-}
- function preexec () {
-    xtitle "Running $1"
-}
+eval "$(zoxide init zsh)"
