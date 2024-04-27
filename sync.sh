@@ -1,10 +1,6 @@
 #!/bin/bash
 
-os="windows"
-
-if [[ $# -gt 0 ]]; then
-  os=$1
-fi
+os=$(./get_os.sh)
 
 NVIM_DIR=~/.config/nvim
 SESSIONIZER_FILE=./ts.sh

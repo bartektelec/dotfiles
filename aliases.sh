@@ -1,3 +1,13 @@
+os="linux"
+
+if [[ $(env | grep ChocolateyInstall | wc -l) -gt 0 ]]; then
+  os="windows"
+fi
+
+if [[ $(env | grep HOMEBREW | wc -l) -gt 0 ]]; then
+  os="mac"
+fi
+
 # ----------------------
 # Git Command Aliases
 # ----------------------
@@ -82,9 +92,21 @@ alias nrn="npm run"
 # Vim
 # ----------------------
 alias nv="nvim"
-alias vimcfg="cd ~/.config/nvim"
-alias cdpr="cd ~/Projects/"
-alias cdpg="cdpr && cd pg.hosting.client/src/ClientApp"
+vimcfg() {
+  if [[ "$os" == "windows" ]]; then
+    cd ~/AppData/Local/nvim
+  else
+    cd ~/.config/nvim
+  fi
+}
+
+cdpr() {
+  if [[ "$os" == "windows" ]]; then
+    cd d:/projects
+  else
+    cd ~/Projects/
+  fi
+}
 
 # ----------------------
 # Tmux
@@ -99,6 +121,10 @@ alias ts="~/ts.sh"
 # ----------------------
 
 tmux() {
-  TMUX="command tmux -u ${@}"
-  SHELL=/usr/bin/bash script -qO /dev/null -c "eval $TMUX"
+  if [[ $os == "windows" ]]; then
+    TMUX="command tmux -u ${@}"
+    SHELL=/usr/bin/bash script -qO /dev/null -c "eval $TMUX"
+  else
+    $TMUX
+  fi
 }

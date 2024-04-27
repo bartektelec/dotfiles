@@ -1,11 +1,6 @@
 #!/bin/bash
 
-os="windows"
-
-if [[ $# -gt 0 ]]; then
-  echo "Setting os $1"
-  os=$1
-fi
+os=$(./get_os.sh)
 
 manager=brew
 font_dir=c:/windows/fonts
