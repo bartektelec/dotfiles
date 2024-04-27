@@ -112,7 +112,9 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source ./aliases.sh
-source ./func.sh
+source ~/aliases.sh
+source ~/func.sh
 
 eval "$(zoxide init zsh)"
+
+weather Oslo 4

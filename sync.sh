@@ -7,10 +7,12 @@ if [[ $# -gt 0 ]]; then
 fi
 
 NVIM_DIR=~/.config/nvim
+TABBY_DIR=~/.config/tabby
 SESSIONIZER_FILE=./ts.sh
 
 if [[ $os == "windows" ]]; then
   NVIM_DIR=~/AppData/Local/nvim
+  TABBY_DIR=~/AppData/Roaming/tabby
   SESSIONIZER_FILE=./ts_win32.sh
 fi
 
@@ -22,6 +24,7 @@ echo "Decode .gitconfig"
 cp -i ./.zshrc ~/.zshrc
 cp -i ./.bash_profile ~/.bash_profile
 cp -i ./.tmux.conf ~/.tmux.conf
+cp -i ./tabby.config.yaml $TABBY_DIR/config.yaml
 cp -i ./aliases.sh ~/aliases.sh
 cp -i ./func.sh ~/func.sh
 cp -i ./secrets/.npmrc ~/.npmrc

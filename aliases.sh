@@ -26,8 +26,24 @@ export EDITOR="nvim"
 # ----------------------
 # Additional
 # ----------------------
-alias weather="curl http://wttr.in/Oslo"
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+myip() {
+  url=http://api.ipify.org?format=text
+  curl $url
+}
+
+weather() {
+  format=v2
+  location=$myip
+  if [[ $# -gt 0 ]]; then
+    location=$1
+
+    if [[ $# -gt 1 ]]; then
+      format=$2
+    fi
+  fi
+
+  curl http://wttr.in/$location\?format=$format
+}
 
 # ----------------------
 # Yarn

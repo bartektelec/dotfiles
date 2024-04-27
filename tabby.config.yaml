@@ -1,0 +1,249 @@
+version: 7
+profiles: []
+groups: []
+configSync:
+  parts: {}
+hotkeys:
+  toggle-window:
+    - Ctrl-Space
+  copy-current-path: []
+  ctrl-c:
+    - Ctrl-C
+  copy:
+    - Ctrl-Shift-C
+  paste:
+    - Ctrl-V
+    - Shift-Insert
+  select-all:
+    - Ctrl-Shift-A
+  clear: []
+  zoom-in:
+    - Ctrl-=
+    - Ctrl-Shift-=
+  zoom-out:
+    - Ctrl--
+    - Ctrl-Shift--
+  reset-zoom:
+    - Ctrl-0
+  home:
+    - Home
+  end:
+    - End
+  previous-word:
+    - Ctrl-Left
+  next-word:
+    - Ctrl-Right
+  delete-previous-word:
+    - Ctrl-Backspace
+  delete-line:
+    - Ctrl-Shift-Backspace
+  delete-next-word:
+    - Ctrl-Delete
+  search:
+    - Ctrl-Shift-F
+  pane-focus-all:
+    - Ctrl-Shift-I
+  focus-all-tabs:
+    - Ctrl-Alt-Shift-I
+  scroll-to-top:
+    - Ctrl-PageUp
+  scroll-up:
+    - Alt-PageUp
+  scroll-down:
+    - Alt-PageDown
+  scroll-to-bottom:
+    - Ctrl-PageDown
+  restart-telnet-session: []
+  restart-ssh-session: []
+  launch-winscp: []
+  settings-tab: {}
+  settings:
+    - Ctrl-,
+  serial: []
+  restart-serial-session: []
+  new-window:
+    - Ctrl-Shift-N
+  profile: {}
+  profile-selectors: {}
+  toggle-fullscreen:
+    - F11
+    - Alt-Enter
+  close-tab:
+    - Ctrl-Shift-W
+  reopen-tab:
+    - Ctrl-Shift-Z
+  toggle-last-tab: []
+  rename-tab:
+    - Ctrl-Shift-R
+  next-tab:
+    - Ctrl-Shift-Right
+    - Ctrl-Tab
+  previous-tab:
+    - Ctrl-Shift-Left
+    - Ctrl-Shift-Tab
+  move-tab-left:
+    - Ctrl-Shift-PageUp
+  move-tab-right:
+    - Ctrl-Shift-PageDown
+  rearrange-panes:
+    - Ctrl-Shift
+  duplicate-tab: []
+  restart-tab: []
+  reconnect-tab: []
+  disconnect-tab: []
+  explode-tab:
+    - Ctrl-Shift-.
+  combine-tabs:
+    - Ctrl-Shift-,
+  tab-1:
+    - Ctrl-Shift-1
+  tab-2:
+    - Ctrl-Shift-2
+  tab-3:
+    - Ctrl-Shift-3
+  tab-4:
+    - Ctrl-Shift-4
+  tab-5:
+    - Alt-5
+  tab-6:
+    - Alt-6
+  tab-7:
+    - Alt-7
+  tab-8:
+    - Alt-8
+  tab-9:
+    - Alt-9
+  tab-10:
+    - Alt-0
+  tab-11: []
+  tab-12: []
+  tab-13: []
+  tab-14: []
+  tab-15: []
+  tab-16: []
+  tab-17: []
+  tab-18: []
+  tab-19: []
+  tab-20: []
+  split-right:
+    - Ctrl-Shift-S
+  split-bottom:
+    - Ctrl-Shift-D
+  split-left: []
+  split-top: []
+  pane-nav-right:
+    - Ctrl-Alt-Right
+  pane-nav-down:
+    - Ctrl-Alt-Down
+  pane-nav-up:
+    - Ctrl-Alt-Up
+  pane-nav-left:
+    - Ctrl-Alt-Left
+  pane-nav-previous:
+    - Ctrl-Alt-[
+  pane-nav-next:
+    - Ctrl-Alt-]
+  pane-nav-1: []
+  pane-nav-2: []
+  pane-nav-3: []
+  pane-nav-4: []
+  pane-nav-5: []
+  pane-nav-6: []
+  pane-nav-7: []
+  pane-nav-8: []
+  pane-nav-9: []
+  pane-maximize:
+    - Ctrl-Alt-Enter
+  close-pane: []
+  pane-increase-vertical: []
+  pane-decrease-vertical: []
+  pane-increase-horizontal: []
+  pane-decrease-horizontal: []
+  switch-profile:
+    - Ctrl-Alt-T
+  profile-selector:
+    - Ctrl-Shift-E
+  command-selector:
+    - Ctrl-Shift-P
+  new-tab:
+    - Ctrl-Shift-T
+terminal:
+  searchOptions: {}
+  colorScheme:
+    name: Catppuccin Macchiato
+    foreground: '#cdd6f4'
+    background: '#24273a'
+    selection: null
+    cursor: '#f4dbd6'
+    cursorAccent: null
+    colors:
+      - '#494d64'
+      - '#f38ba8'
+      - '#a6da95'
+      - '#eed49f'
+      - '#8aadf4'
+      - '#f5bde6'
+      - '#8bd5ca'
+      - '#b8c0e0'
+      - '#5b6078'
+      - '#f38ba8'
+      - '#a6da95'
+      - '#eed49f'
+      - '#8aadf4'
+      - '#f5bde6'
+      - '#8bd5ca'
+      - '#a5adcb'
+  font: GohuFont uni11 Nerd Font Mono
+  fontSize: 22
+  minimumContrastRatio: 3
+  profile: local:git-bash
+  altIsMeta: true
+  rightClick: menu
+  copyOnSelect: false
+  bell: visual
+  customColorSchemes:
+    - name: Catppuccin Macchiato
+      foreground: '#cdd6f4'
+      background: '#24273a'
+      selection: null
+      cursor: '#f4dbd6'
+      cursorAccent: null
+      colors:
+        - '#494d64'
+        - '#f38ba8'
+        - '#a6da95'
+        - '#eed49f'
+        - '#8aadf4'
+        - '#f5bde6'
+        - '#8bd5ca'
+        - '#b8c0e0'
+        - '#5b6078'
+        - '#f38ba8'
+        - '#a6da95'
+        - '#eed49f'
+        - '#8aadf4'
+        - '#f5bde6'
+        - '#8bd5ca'
+        - '#a5adcb'
+ssh: {}
+clickableLinks: {}
+accessibility: {}
+appearance:
+  lastTabClosesWindow: true
+  css: |-
+    /* * { color: blue !important; } */
+    terminaltab > div {
+      margin: 0 !important;
+    }
+hacks: {}
+providerBlacklist: []
+commandBlacklist: []
+language: en-GB
+enableAnalytics: false
+enableWelcomeTab: false
+pluginBlacklist: []
+profileDefaults:
+  ssh:
+    disableDynamicTitle: true
+profileBlacklist: []
+
