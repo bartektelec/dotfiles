@@ -26,6 +26,7 @@ create_new() {
 
   tmux split-window -t $selected_name:2 -v
   tmux send-keys -t "$selected_name:1" C-z "cd $selected && nvim" Enter
+  tmux send-keys -t "$selected_name:3" C-z "cd $selected && nvim" Enter
   tmux rename-window -t "$selected_name:1" nvim
   tmux selectw -t $selected_name:1
   cd $old_pwd

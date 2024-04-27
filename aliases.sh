@@ -5,15 +5,16 @@ alias gpoh='git push origin HEAD'
 alias glog='git log --color --graph --date=iso --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset" --abbrev-commit --'
 alias gtree="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gpull='git pull'
-alias gpm='git pull origin master'
 alias gc='git clone'
 alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
 alias ga='git add'
 alias gaa='git add .'
 alias gap='git add -p'
 alias gs='git status'
 alias gamend='git commit --amend'
-alias grom='git rebase origin/master'
+alias grom='git rebase origin/main'
 
 # ----------------------
 # Shell
@@ -75,13 +76,13 @@ alias cdpg="cdpr && cd pg.hosting.client/src/ClientApp"
 export TERM="screen-256color"
 alias tma="script -c 'tmux -u attach' /dev/null"
 alias tmn="script -c tmux /dev/null"
-alias ts="~/ts_win32.sh"
+alias ts="~/ts.sh"
 
 # ----------------------
 # Kube
 # ----------------------
 
-tmux () {
-    TMUX="command tmux -u ${@}"
-    SHELL=/usr/bin/bash script -qO /dev/null -c "eval $TMUX";
+tmux() {
+  TMUX="command tmux -u ${@}"
+  SHELL=/usr/bin/bash script -qO /dev/null -c "eval $TMUX"
 }
