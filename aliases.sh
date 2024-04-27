@@ -82,8 +82,8 @@ alias nrn="npm run"
 # Vim
 # ----------------------
 alias nv="nvim"
-alias vimcfg="cd $HOME/AppData/Local/nvim"
-alias cdpr="cd D:/projects/"
+alias vimcfg="cd ~/.config/nvim"
+alias cdpr="cd ~/Projects/"
 alias cdpg="cdpr && cd pg.hosting.client/src/ClientApp"
 
 # ----------------------

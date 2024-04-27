@@ -24,6 +24,7 @@ $manager install git
 $manager install fzf
 $manager install fd
 $manager install ripgrep
+$manager install zoxide
 $manager install lazygit
 $manager install cmake
 $manager install neovim
