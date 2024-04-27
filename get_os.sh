@@ -1,4 +1,4 @@
-if [[ $(env | grep ChocolateyInstall | wc -l) -gt 0 ]]; then
+if [[ $(env | grep WINDIR | wc -l) -gt 0 ]]; then
   echo "windows"
   exit 0
 fi
