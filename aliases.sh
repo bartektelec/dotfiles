@@ -42,17 +42,17 @@ myip() {
 }
 
 weather() {
-  format=v2
+  format=""
   location=$myip
   if [[ $# -gt 0 ]]; then
     location=$1
 
     if [[ $# -gt 1 ]]; then
-      format=$2
+      format="\?format=$2"
     fi
   fi
 
-  curl http://wttr.in/$location\?format=$format
+  curl http://wttr.in/$location$format
 }
 
 # ----------------------
