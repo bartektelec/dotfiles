@@ -5,7 +5,7 @@ os=$(./get_os.sh)
 NVIM_DIR=~/.config/nvim
 SESSIONIZER_FILE=./ts.sh
 
-if [[ $os == "windows" ]]; then
+if [[ "$os" == "windows" ]]; then
   NVIM_DIR=~/AppData/Local/nvim
   SESSIONIZER_FILE=./ts_win32.sh
 fi

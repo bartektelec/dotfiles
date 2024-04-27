@@ -5,12 +5,12 @@ os=$(./get_os.sh)
 manager=brew
 font_dir=c:/windows/fonts
 
-if [[ $os == "linux" ]]; then
+if [[ "$os" == "linux" ]]; then
   manager=apt
   $manager update
 fi
 
-if [[ $os == "windows" ]]; then
+if [[ "$os" == "windows" ]]; then
   manager=choco
   $manager install mingw
 fi
