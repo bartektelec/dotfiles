@@ -31,6 +31,7 @@ $manager install discord
 $manager install vscode
 $manager install docker
 $manager install tabby
+$manager install wezterm
 $manager install volta
 $manager install azure-data-studio
 

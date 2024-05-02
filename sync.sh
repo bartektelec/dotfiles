@@ -19,6 +19,7 @@ cp -i ./.zshrc ~/.zshrc
 cp -i ./.bash_profile ~/.bash_profile
 cp -i ./.tmux.conf ~/.tmux.conf
 cp -i ./tabby.config.yaml "$TABBY_CONFIG_DIRECTORY/config.yaml"
+cp -i ./.wezterm.lua "$HOME/.wezterm.lua"
 cp -ip ./aliases.sh ~/aliases.sh
 cp -ip ./func.sh ~/func.sh
 cp -i ./secrets/.npmrc ~/.npmrc

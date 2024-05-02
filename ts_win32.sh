@@ -24,7 +24,7 @@ create_new() {
   echo "Creating new session"
 
   cd $selected
-  run_win_tmux new-session -ds $selected_name -c $selected
+  run_win_tmux -u new-session -ds $selected_name -c $selected
   tmux new-window -t $selected_name: -n term
   tmux new-window -t $selected_name: -n zsh
   sleep 10
@@ -39,7 +39,7 @@ create_new() {
   run_win_tmux attach -t $selected_name
 }
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [[ -z $tmux_running ]]; then
   create_new
   exit 0
 fi
@@ -50,4 +50,4 @@ if [ $running_session -eq 0 ]; then
 fi
 
 echo "Found session"
-run_win_tmux attach -t $selected_name
+run_win_tmux -u attach -t $selected_name
