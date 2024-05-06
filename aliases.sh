@@ -115,11 +115,6 @@ export TERM="screen-256color"
 alias tma="script -c 'tmux -u attach' /dev/null"
 alias tmn="script -c tmux /dev/null"
 alias ts="~/ts.sh"
-
-# ----------------------
-# Kube
-# ----------------------
-
 tmux() {
   if [[ $os == "windows" ]]; then
     TMUX="command tmux -u ${@}"
@@ -128,3 +123,24 @@ tmux() {
     $TMUX
   fi
 }
+
+# ----------------------
+# Docker
+# ----------------------
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+
+# ----------------------
+# Dotnet
+# ----------------------
+dnr() {
+  if [[ $# -eq 1 ]]; then
+    dotnet run --project "$1"
+  fi
+
+  selected=$(find . -maxdepth 2 -type d | fzf)
+  dotnet run --project "$selected"
+}
+
+alias dnb="dotnet build"
+alias dnt="dotnet test"
