@@ -3,9 +3,8 @@ local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 
 local config = wezterm.config_builder()
-local session_manager = require("wezterm-session-manager/session-manager")
 
-config.color_scheme = "Dracula"
+config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("GohuFont uni11 Nerd Font Mono")
 config.font_size = 15
 config.enable_scroll_bar = true
@@ -135,15 +134,6 @@ config.colors = {
 		background = "#1D1E2E",
 
 		-- The active tab is the one that has focus in the window
-		active_tab = {
-			bg_color = "#313243",
-			fg_color = "#C0C8E5",
-			intensity = "Normal",
-			underline = "None",
-			italic = false,
-			strikethrough = false,
-		},
-
 		inactive_tab = {
 			bg_color = "#1E1D2E",
 			fg_color = "#808080",
