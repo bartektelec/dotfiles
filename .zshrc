@@ -117,4 +117,15 @@ source ~/func.sh
 
 eval "$(zoxide init zsh)"
 
-weather Oslo 4
+# Save the current directory after each command
+chpwd() {
+  echo "$PWD" > ~/.zsh_last_dir
+}
+precmd() {
+  echo "$PWD" > ~/.zsh_last_dir
+}
+
+# Restore directory on new shell
+if [ -f ~/.zsh_last_dir ]; then
+  cd "$(cat ~/.zsh_last_dir)"
+fi
