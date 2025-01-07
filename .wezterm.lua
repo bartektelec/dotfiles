@@ -4,7 +4,7 @@ local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/s
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "tokyonight"
 config.font = wezterm.font("GohuFont uni11 Nerd Font Mono")
 config.font_size = 15
 config.enable_scroll_bar = true
@@ -20,17 +20,15 @@ config.tab_bar_at_bottom = true
 
 config.use_fancy_tab_bar = false
 
--- wezterm.on("save_session", function(window)
--- 	session_manager.save_state(window)
--- end)
--- wezterm.on("load_session", function(window)
--- 	session_manager.load_state(window)
--- end)
--- wezterm.on("restore_session", function(window)
--- 	session_manager.restore_state(window)
--- end)
-
 resurrect.periodic_save({ interval_seconds = 600 })
+workspace_switcher.workspace_formatter = function(label)
+	return wezterm.format({
+		{ Attribute = { Italic = true } },
+		{ Foreground = { Color = "pink" } },
+		{ Background = { Color = "black" } },
+		{ Text = "📭: " .. label },
+	})
+end
 -- loads the state whenever I create a new workspace
 wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, path, label)
 	local workspace_state = resurrect.workspace_state
@@ -129,9 +127,58 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(wezterm.format(elements))
 	window:set_left_status(wezterm.format(left_elements))
 end)
+
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_upper_right_triangle
+
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
+
+function tab_title(tab_info)
+	local title = tab_info.tab_title
+	-- if the tab title is explicitly set, take that
+	if title and #title > 0 then
+		return title
+	end
+	-- Otherwise, use the title from the active pane
+	-- in that tab
+	return tab_info.active_pane.title
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local edge_background = "#3B4251"
+	local background = "#4B566A"
+	local foreground = "#EDF0F4"
+
+	if tab.is_active then
+		background = "#87C0CF"
+		foreground = "#2D343F"
+	elseif hover then
+		background = "#80A0C0"
+		foreground = "#4C566B"
+	end
+
+	local edge_foreground = background
+
+	local title = tab_title(tab)
+
+	-- ensure that the titles fit in the available space,
+	-- and that we have room for the edges.
+	title = wezterm.truncate_left(title, max_width - 4)
+
+	return {
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = edge_foreground } },
+		{ Text = SOLID_LEFT_ARROW },
+		{ Background = { Color = background } },
+		{ Foreground = { Color = foreground } },
+		{ Text = string.format("%d:%s", tab.tab_index + 1, title) },
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = edge_foreground } },
+		{ Text = SOLID_RIGHT_ARROW },
+	}
+end)
 config.colors = {
 	tab_bar = {
-		background = "#1D1E2E",
+		background = "#3B4251",
 
 		-- The active tab is the one that has focus in the window
 		inactive_tab = {
@@ -140,7 +187,7 @@ config.colors = {
 		},
 
 		new_tab = {
-			bg_color = "#1D1E2E",
+			bg_color = "#3B4251",
 			fg_color = "#1D1E2E",
 		},
 
@@ -154,6 +201,8 @@ config.colors = {
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 3000 }
 config.debug_key_events = true
 config.keys = {
+	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollByLine(-1) },
+	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollByLine(1) },
 	{
 		key = "|",
 		mods = "LEADER|SHIFT",
@@ -285,6 +334,11 @@ config.keys = {
 		key = "p",
 		mods = "LEADER",
 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|COMMANDS" }),
+	},
+	{
+		key = "P",
+		mods = "LEADER",
+		action = wezterm.action.ActivateCommandPalette,
 	},
 	{
 		key = "a",
